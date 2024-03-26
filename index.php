@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS people (
 );
 SQL);
 
-if (isset($_POST['first_name'])) {
+if (isset($_POST['first_name']) && isset($_POST['last_name'])) {
   $statement = $db->prepare('INSERT INTO people (first_name, last_name) VALUES (:first_name, :last_name)');
   $statement->bindValue(':first_name', $_POST['first_name']);
   $statement->bindValue(':last_name', $_POST['last_name']);
@@ -27,6 +27,8 @@ $statement = $db->prepare('SELECT * FROM people');
 $result = $statement->execute();
 
 $people = $result->fetchArray(SQLITE3_ASSOC);
+
+var_dump($people);
 
 ?>
 
