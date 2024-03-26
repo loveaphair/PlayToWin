@@ -21,14 +21,14 @@ if (isset($_POST['first_name']) && isset($_POST['last_name'])) {
   $statement->execute();
 }
 
-$statement = $db->prepare('SELECT * FROM people');
+/* $statement = $db->prepare('SELECT * FROM people'); */
 /* $statement->bindValue(1, 42); */
 /* $statement->bindValue(2, '2017-01-14'); */
-$result = $statement->execute();
+/* $result = $statement->execute(); */
 
-$people = $result->fetchArray(SQLITE3_ASSOC);
+$query = $db->query('SELECT * FROM people');
 
-var_dump($people);
+/* $people = $result->fetchArray(SQLITE3_ASSOC); */
 
 ?>
 
@@ -48,7 +48,7 @@ var_dump($people);
 
 <ul>
   <?php
-    foreach($people as $person) {
+    while($person = $query->fetchArray(SQLITE3_ASSOC)) {
       echo "<li>{$person['first_name']} {$person['last_name']}</li>";
     }
   ?>
