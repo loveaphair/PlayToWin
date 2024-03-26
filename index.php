@@ -1,6 +1,6 @@
 <?php
 
-$db = new SQLite3('db.sqlite', SQLITE3_OPEN_CREATE | SQLITE3_OPEN_READWRITE);
+$db = new SQLite3('./data/db.sqlite', SQLITE3_OPEN_CREATE | SQLITE3_OPEN_READWRITE);
 // Errors are emitted as warnings by default, enable proper error handling.
 $db->enableExceptions(true);
 
